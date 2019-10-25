@@ -1,4 +1,5 @@
-FROM openknowledge/ckan-dev:2.7
+# FROM openknowledge/ckan-dev:2.8
+FROM alphagov/ckan-dev:2.7
 
 MAINTAINER Your Name Here <you@example.com>
 
@@ -18,7 +19,7 @@ RUN which python && \
     pip install -r https://raw.githubusercontent.com/alphagov/ckanext-dcat/6253f296c6d1200465a3223710d076cd24e37834/requirements.txt && \
     pip install -e git+https://github.com/alphagov/ckanext-harvest.git@5671bdf93269c9b80369a0b40a166bce76ea40ee#egg=ckanext-harvest && \
     pip install -r https://raw.githubusercontent.com/alphagov/ckanext-harvest/5671bdf93269c9b80369a0b40a166bce76ea40ee/pip-requirements.txt && \
-    pip install -e git+https://github.com/alphagov/ckanext-spatial.git@7bdc8c5ff63c91cd7996cd461505bcba9c39a34d#egg=ckanext-spatial && \
+#    pip install -e git+https://github.com/alphagov/ckanext-spatial.git@7bdc8c5ff63c91cd7996cd461505bcba9c39a34d#egg=ckanext-spatial && \
     pip install -r https://raw.githubusercontent.com/alphagov/ckanext-spatial/7bdc8c5ff63c91cd7996cd461505bcba9c39a34d/pip-requirements.txt && \
     pip install -e git+https://github.com/alphagov/ckanext-s3-resources.git@81eb36fb51da5e216e9405a7ad64c4096881ca85#egg=ckanext-s3-resources && \
     pip install -r https://raw.githubusercontent.com/alphagov/ckanext-s3-resources/81eb36fb51da5e216e9405a7ad64c4096881ca85/requirements.txt && \
