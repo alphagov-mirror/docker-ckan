@@ -85,9 +85,10 @@ RUN pip install -e git+${GIT_URL}@${GIT_BRANCH}#egg=ckan && \
     # Create and update CKAN config
     paster --plugin=ckan make-config ckan ${CKAN_INI} && \
     paster --plugin=ckan config-tool ${CKAN_INI} "ckan.plugins = ${CKAN__PLUGINS}" && \
-    paster --plugin=ckan config-tool ${CKAN_INI} "ckan.site_url = ${CKAN__SITE_URL}" && \
-    cd ${APP_DIR}/ckanext-datagovuk && \
-    paster --plugin=ckan db upgrade ${CKAN_INI}
+    paster --plugin=ckan config-tool ${CKAN_INI} "ckan.site_url = ${CKAN__SITE_URL}"
+    # && \
+    # cd ${APP_DIR}/ckanext-datagovuk && \
+    # paster --plugin=ckan db upgrade ${CKAN_INI}
 
 
 # Create a local user and group to run the app
@@ -100,7 +101,7 @@ RUN mkdir -p $CKAN_STORAGE_PATH && \
 
 COPY setup ${APP_DIR}
 COPY setup/production.ini ${APP_DIR}/production.ini
-COPY setup/ckan_harvesting.conf /etc/supervisor.d/ckan_harvesting.conf
+COPY setup/ckan_harvesting.conf /etc/supervisord.d/ckan_harvesting.conf
 COPY setup/supervisor.worker.conf /etc/supervisord.d/worker.conf
 COPY setup/uwsgi.conf /srv/app/uwsgi.conf
 
