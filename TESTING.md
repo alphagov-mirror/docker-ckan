@@ -4,7 +4,7 @@ This page lists all the available testing tools used in the DGU dev and deployed
 
 ## Frontend tests
 
-Visual regression tests (VRT) check if there are any changes between different versions of CKAN -
+Visual regression tests (VRT) check if there are any styling differences across the CKAN admin panel. This can be used to assess styling changes that could impact any of the views within the admin panel eg: between different versions of CKAN -
 
 https://github.com/alphagov/datagovuk-visual-regression-tests
 
