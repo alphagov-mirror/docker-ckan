@@ -3,9 +3,11 @@ version: "3"
 services:
   elasticsearch-2.8:
     container_name: elasticsearch-2.8
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.9
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
     environment:
       - node.name=elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
@@ -34,7 +36,8 @@ services:
       - db-2.8
       - elasticsearch-2.8
       - redis-2.8
-    command: bash -c "./bin/setup-docker.sh"
+    # command: bash -c "./bin/setup-docker.sh"
+    command: bash -c "tail -f /dev/null"
     volumes:
       - ./src/2.8/datagovuk_publish:/srv/app/datagovuk_publish
       - ./logs/2.8:/var/log/sidekiq
@@ -52,7 +55,8 @@ services:
       - elasticsearch-2.8:elasticsearch
     depends_on: 
       - elasticsearch-2.8
-    command: bash -c "./bin/setup-docker.sh"
+    # command: bash -c "./bin/setup-docker.sh"
+    command: bash -c "tail -f /dev/null"
     volumes:
       - ./src/2.8/datagovuk_find:/srv/app/datagovuk_find
       - ./logs/2.8:/var/log/find
